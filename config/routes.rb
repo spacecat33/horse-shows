@@ -4,5 +4,12 @@ Rails.application.routes.draw do
   
   resources :users
   resources :sessions, only: [:new, :create, :delete]
+
   
+
+  # Sessions routes
+get '/login', to: 'sessions#new', as: 'login'
+get '/auth/:provider/callback', to: 'sessions#create' # OAuth callback route
+post '/login', to: 'sessions#create'
+get '/logout', to: 'sessions#destroy'
 end

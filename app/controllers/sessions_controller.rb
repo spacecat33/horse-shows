@@ -1,13 +1,19 @@
-class SessionsController << ApplicationController
+class SessionsController < ApplicationController
     def new
         @user = User.new
     end
 
     def create
-        @user = User.find_by(name: params[:user][:name])
-        return head(:forbidden) unless @user.authenticate(params[:user][:password])
-        session[:user_id] = @user.id
-        redirect_to '/'
+        @user = User.find_by(username: params[:user][:username])
+        if @user = User.find_by(username: params[:user][:username])
+            if @user.authenticate(params[:user][:password])
+                session[:user_id] = @user.id
+                redirect_to '/projects'
+            end
+        else
+            flash.now[:errors] = "There was an error logging in. Please check your username and password."
+            render 'sessions/new'
+        end
     end
 
     # def create
@@ -20,11 +26,18 @@ class SessionsController << ApplicationController
     # end
 
     def destroy
-        session.delete :username
-        redirect_to login_path
-    end
+        logout
+        redirect_to root_path
+      end
+  
 
     private
+
+    def logout
+        session.clear
+    end
+
+
     def user_params
         params.require(:user).permit(:username, :password, :password_confirmation)
     end
