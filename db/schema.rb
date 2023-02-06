@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_04_212155) do
+ActiveRecord::Schema.define(version: 2023_02_05_202705) do
+
+  create_table "horses", force: :cascade do |t|
+    t.string "name"
+    t.integer "level"
+    t.string "breed"
+    t.integer "height"
+    t.string "colour"
+    t.integer "age"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.string "title"
+    t.string "location"
+    t.string "discipline"
+    t.integer "level"
+    t.integer "entry_fee"
+    t.integer "user_id"
+    t.integer "horse_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["horse_id"], name: "index_shows_on_horse_id"
+    t.index ["user_id"], name: "index_shows_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -22,4 +47,6 @@ ActiveRecord::Schema.define(version: 2023_02_04_212155) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "shows", "horses"
+  add_foreign_key "shows", "users"
 end
