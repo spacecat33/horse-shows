@@ -1,15 +1,31 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'welcome#hello'
-  
-  resources :users
-  resources :sessions, only: [:new, :create, :delete]
 
   
+  resources :users do
+    resources :shows, only: [:index]
+  end
+  
 
-  # Sessions routes
-get '/login', to: 'sessions#new', as: 'login'
-get '/auth/:provider/callback', to: 'sessions#create' # OAuth callback route
-post '/login', to: 'sessions#create'
-get '/logout', to: 'sessions#destroy'
+  resources :horses do
+    resources :shows, only: [:index]
+  end
+
+  root 'application#home'
+  
+# fix this route: http://localhost:3000/users/new
+ 
+  get '/users/new', to: 'users#new'
+  post '/users/new', to: 'users#create'
+
+  post '/show', to:"shows#create", as: 'show'
+
+   # Sessions routes
+  get '/signin', to: 'sessions#signin'
+  post '/signin', to: 'sessions#signedin'
+  get '/signout', to: 'sessions#signout'
+  
+
+  get '/auth/:provider/callback', to: 'sessions#create' # OAuth callback route
+
 end

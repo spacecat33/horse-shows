@@ -1,11 +1,19 @@
-<h1>Create an account</h1>
+<% if @user %>
+    
+<% else %>
 
-<%=form_for @user do |f|%>
+<h1>Create an account</h1>
+<%=form_for (@user) do |f|%>
   <%=f.label :name%>
-  <%=f.text_field :name%>
+  <%=f.text_field :name%><br><br>
+  <%= f.label :country %>
+  <%= f.text_field :country %><br><br>
+  <%= f.label "What level are you? (1-5 scale)" %>
+  <%= f.number_field :level %><br><br>
   <%=f.label :password%>
-  <%=f.password_field  :password%>
+  <%=f.password_field  :password%><br><br>
   <%=f.label :password_confirmation%>
-  <%=f.password_field  :password_confirmation%>
-  <%=f.submit%>
+  <%=f.password_field  :password_confirmation%><br><br>
+  <%=f.submit 'Create User'%>
+<%end%>
 <%end%>

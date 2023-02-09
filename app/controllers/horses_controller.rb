@@ -1,14 +1,46 @@
 class HorsesController < ApplicationController
 
-    def new_hore_entry(user, title, level, discipline)
-        # Horse#new_horse_entry(user, title, level, discipline)
-        Show.create(
-            title: title,
-            level: level,
-            disipline: discipline,
-            entry_fee: entry_fee,
-            horse_id: horse.id,
-            user_id: user.id
+    def index
+        @horses = Horse.all
+        @user = current_user
+    end
+
+    def show
+        @horse = Horse.find_by(id: params[:id])
+        @show = Show.new
+        @user = current_user
+    end
+
+    def new
+        @horse = Horse.new
+    end
+
+    def create
+        @horse = Horse.create(horse_params)
+        redirect_to horse_path(@horse)
+    end
+
+    def edit
+        @horse = Horse.find_by(id: params[:id])
+        @show = Show.create(user_id: current_user.id, horse_id: @horse.id)
+    end
+
+    def update
+        horse = Horse.find_by(id: params[:id])
+        horse.update(horse_params)
+        redirect_to horse_path(horse)
+     end
+
+     private
+
+    def horse_params
+        params.require(:horse).permit(
+            :name,
+            :level,
+            :breed,
+            :height,
+            :colour,
+            :age
         )
     end
 

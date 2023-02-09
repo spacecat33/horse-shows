@@ -1,0 +1,13 @@
+<br><br>
+<h1><%= @horse.name %></h1>
+<% if @user %>
+    <p><%= link_to 'Edit Horse', [:edit, @horse] %></p>
+<% else %>
+    <%= form_for(@show, url: show_path) do |f| %>
+        <%= f.hidden_field :user_id, value: @user.id %><br />
+        <%= f.hidden_field :horse_id, value: @horse.id %><br />
+        <%= f.submit "Attend this show"%>
+    <% end %>
+<% end %>
+
+

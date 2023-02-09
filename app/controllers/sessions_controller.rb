@@ -1,44 +1,54 @@
 class SessionsController < ApplicationController
+    
+
+
     def new
-        @user = User.new
+        redirect_to root_path if logged_in?
     end
 
     def create
+        redirect_to root_path if logged_in?
+        if auth
+            @user =
+                    User.find_or_create_by(email: auth['uid']) do |u|
+                            u.name = auth['info']['name']
+                            u.email = auth['info']['email']
+                            u.image_url = auth['info']['image']
+                            u.password = SecureRandom.hex(12)
+                    end
+                    session[:user_id] = @user.id
+        
+                    render '/application/home'
+                end
+      end
+
+    def signin
+        @users = User.all
+    end
+
+    def signedin 
         @user = User.find_by(name: params[:user][:name])
-        if @user = User.find_by(name: params[:user][:name])
-            if @user.authenticate(params[:user][:password])
-                session[:user_id] = @user.id
-                redirect_to '/projects'
-            end
+        if !@user
+            redirect_to '/signin'
         else
-            flash.now[:errors] = "There was an error logging in. Please check your name and password."
-            render 'sessions/new'
+            session[:user_id] = @user.id
+            redirect_to root_path
         end
     end
 
-    # def create
-    #     if params[:name] && !params[:name].empty?
-    #         session[:name] = params[:name]
-    #         redirect_to root_path
-    #     else
-    #         redirect_to login_path
-    #     end
-    # end
-
-    def destroy
-        logout
-        redirect_to root_path
-      end
-  
+    def signout
+        session.delete(:user_id)
+        redirect_to '/signin'
+    end
 
     private
+
+    def auth
+        request.env['omniauth.auth']
+    end
 
     def logout
         session.clear
     end
 
-
-    def user_params
-        params.require(:user).permit(:name, :password, :password_confirmation)
-    end
 end

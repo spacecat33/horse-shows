@@ -1,0 +1,16 @@
+<h1>Horses</h1>
+<ul>
+    <% @horses.each do |horse| %>
+        <% if @user.name %>
+            <li><%= link_to "Show #{horse.name}", horse_path(horse) %></li>
+        <% else %>
+            <li><%= link_to "Tack up #{horse.name}", horse_path(horse) %></li>
+        <% end %>
+    <% end %>
+
+   
+</ul>
+<% if @user %>
+    <p><%= link_to 'Create New Show', show_path %></p>
+    <p><%= link_to 'Create New Horse', new_horse_path %></p>
+<% end %>

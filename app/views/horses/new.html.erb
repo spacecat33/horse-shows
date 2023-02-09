@@ -1,0 +1,10 @@
+<h1> Add Horse to User </h1>
+<%= form_for @horse do |f| %>
+    Name: <%= f.text_field :name %><br>
+    Level: <%= f.number_field :level %><br>
+    Height: <%= f.number_field :height %><br>
+    Age: <%= f.number_field :age %><br>
+    Breed: <%= f.text_field :breed %><br><br>
+    Colour: <%= f.text_field :colour %><br><br>
+    <%= f.submit %>
+<% end %>
