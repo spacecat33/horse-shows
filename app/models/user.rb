@@ -3,6 +3,7 @@ class User < ApplicationRecord
     has_many :shows
     has_many :horses, through: :shows
 
+    validates :name, uniqueness: true, presence: true  
 
     def total_spend_on_fees
         # User#total_spend_on_fees
@@ -21,5 +22,5 @@ class User < ApplicationRecord
         user_id_with_highest_spend = entry_fee_spend_bu_user.max.first
         User.find(user_id_with_highest_spend)
     end
-    
+
 end

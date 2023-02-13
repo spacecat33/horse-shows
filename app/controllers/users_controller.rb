@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
    
+    def index
+        @user = current_user
+    end
+    
     def new
         redirect_to root_path if logged_in?
         @user = User.new
@@ -19,9 +23,7 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find_by(id: params[:id])
-        if @user != current_user
-            redirect_to user_path(@user)
-        end
+       
     end
    
     private

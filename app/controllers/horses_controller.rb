@@ -17,12 +17,12 @@ class HorsesController < ApplicationController
 
     def create
         @horse = Horse.create(horse_params)
-        redirect_to horse_path(@horse)
+        redirect_to @horse
     end
 
     def edit
         @horse = Horse.find_by(id: params[:id])
-        @show = Show.create(user_id: current_user.id, horse_id: @horse.id)
+       
     end
 
     def update

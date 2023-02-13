@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
         if session[:user_id]
             @user = User.find_by_id(session[:user_id])
         end
-        # (@current_user ||= User.find(session[:user_id])) if session[:user_id]
+        @user ||= User.find_by_id(session[:user_id]) if session[:user_id]   #this would help to avoid duplicate requests to the database
     end
 
     # # def require_login

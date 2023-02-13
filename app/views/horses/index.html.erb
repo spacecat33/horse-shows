@@ -11,6 +11,6 @@
    
 </ul>
 <% if @user %>
-    <p><%= link_to 'Create New Show', show_path %></p>
+    <p><%= link_to 'See your shows', user_shows_path(@user) %></p>
     <p><%= link_to 'Create New Horse', new_horse_path %></p>
 <% end %>

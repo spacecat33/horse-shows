@@ -6,7 +6,7 @@
     <%= label_tag(:name, "Your name: ") %>
     <%= collection_select(:user, :name, User.all, :name, :name, prompt: "Plese select your name from this dropdown") %> <br><br>
     <%= label_tag(:password, "Your password: ") %>
-    <%= password_field_tag(:password, nil) %><br><br>
+    <%= password_field_tag("user[password]", nil) %><br><br>
     <%= submit_tag("Sign In") %>
 <% end %>
 <br>

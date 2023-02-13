@@ -1,0 +1,7 @@
+<p><strong>Name: </strong><%= @user.name %></p>
+<p><strong>Country: </strong><%= @user.country %></p>
+<p><strong>Level: </strong><%= @user.level %></p>
+<%= link_to "See horses", horses_path %>
+<% flash.each do |type, msg| %>
+    <%= msg %>
+<% end %>
