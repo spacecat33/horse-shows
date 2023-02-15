@@ -1,0 +1,6 @@
+<h1> Edit @user  </h1>
+<%= form_for @user do |f| %>
+    Country: <%= f.text_field :country %><br><br>
+    Level: <%= f.number_field :level %><br>
+    <%= f.submit %>
+<% end %>

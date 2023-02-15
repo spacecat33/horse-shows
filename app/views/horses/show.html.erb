@@ -1,5 +1,20 @@
 <br><br>
 <h1><%= @horse.name %></h1>
+
+
+<p><strong>Level: </strong><%= @horse.level %></p>
+<p><strong>Height in hands: </strong><%= @horse.height %></p>
+<p><strong>Age: </strong><%= @horse.age %></p>
+<p><strong>Breed: </strong><%= @horse.breed %></p>
+<p><strong>Colour: </strong><%= @horse.colour %></p>
+
+
+<p><%= @horse.name %> is in the following shows by <%= @user.name %>:  --- If no shows are visible below, this means no shows have been scheduled for this horse.</p>
+<ol><% @horse.shows.each.with_index(1) do |show, index| %>
+        <li>Show</li>
+    <% end %></ol><br><br>
+
+
 <% if @user %>
     <p><%= link_to 'Edit Horse', [:edit, @horse] %></p>
 <% else %>
@@ -9,5 +24,4 @@
         <%= f.submit "Attend this show"%>
     <% end %>
 <% end %>
-
 
