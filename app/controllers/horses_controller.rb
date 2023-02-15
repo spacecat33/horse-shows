@@ -1,8 +1,8 @@
 class HorsesController < ApplicationController
 
     def index
-        @horses = Horse.all
         @user = current_user
+        @horses = Horse.all
     end
 
     def show
@@ -16,8 +16,13 @@ class HorsesController < ApplicationController
     end
 
     def create
-        @horse = Horse.create(horse_params)
-        redirect_to @horse
+        @horse = Horse.new(horse_params)
+        if @horse.valid?
+            @horse.save
+        redirect_to horse_path(@horse)
+        else
+            render :new
+        end
     end
 
     def edit
@@ -26,9 +31,13 @@ class HorsesController < ApplicationController
     end
 
     def update
-        horse = Horse.find_by(id: params[:id])
-        horse.update(horse_params)
-        redirect_to horse_path(horse)
+        @user = current_user
+        @horse = Horse.find_by(id: params[:id])
+        if @horse.update(horse_params)
+            redirect_to horse_path(@horse)
+          else
+            render :edit
+          end
      end
 
      private

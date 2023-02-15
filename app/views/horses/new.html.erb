@@ -1,5 +1,15 @@
 <h1> Add Horse to User </h1>
 <%= form_for @horse do |f| %>
+    <% if @horse.errors.any? %>
+    <div id="error_explanation">
+      <h2>There were some errors:</h2>
+      <ul>
+        <% @horse.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     Name: <%= f.text_field :name %><br>
     Level: <%= f.number_field :level %><br>
     Height: <%= f.number_field :height %><br>
