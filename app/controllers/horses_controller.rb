@@ -1,8 +1,9 @@
 class HorsesController < ApplicationController
 
     def index
-        @user = current_user
+        redirect_to signin_path unless @user = current_user
         @horses = @user.horses
+
     end
 
     def show

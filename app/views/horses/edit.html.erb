@@ -1,19 +1,5 @@
 <h1> Edit Horse  </h1>
 <%= form_for @horse do |f| %>
-    <% if @horse.errors.any? %>
-    <div id="error_explanation">
-    <h2>
-      <%= pluralize(@horse.errors.count, "error") %>
-      prohibited this post from being saved:
-    </h2>
-
-    <ul>
-    <% @horse.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-    </div>
-    <% end %>
     Name: <%= f.text_field :name %><br>
     Level: <%= f.number_field :level %><br>
     Height in hands: <%= f.number_field :height %><br>
@@ -21,5 +7,20 @@
     Breed: <%= f.text_field :breed %><br><br>
     Colour: <%= f.text_field :colour %><br><br>
     <%= f.submit %>
+<% end %>
+
+<% if @horse.errors.any? %>
+<div id="error_explanation">
+<h2>
+  <%= pluralize(@horse.errors.count, "error") %>
+  prohibited this post from being saved:
+</h2>
+
+<ul>
+<% @horse.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
+</ul>
+</div>
 <% end %>
 

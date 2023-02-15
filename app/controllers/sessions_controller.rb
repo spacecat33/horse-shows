@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
     def signin
         @user = current_user
         @users = User.all
+        
     end
 
     def signedin 

@@ -2,12 +2,14 @@
 <ol>
     <% @shows.each do |show| %>
         <ol>
-        <h3>Title: <%= show.title %></h4>
-        <h4>Location: <%= show.location %><br>
+        Rider:  <%= link_to show.user.name, user_path(show.user) %>
+        Horse:  <%= link_to show.horse.name, horse_path(show.horse) %> <br><br>
+        <b>Show Title: <%= show.title %></b><br>
+        Location: <%= show.location %><br>
         Discipline: <%= show.discipline %><br>
         Level: <%= show.level %><br>
         Entry_fee: <%= show.entry_fee %><br>
-        </h4><br><br>
+        <br><br>
     </ol>
     <% end %>
 </ol>

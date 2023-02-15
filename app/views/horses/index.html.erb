@@ -1,12 +1,12 @@
-<h1><%= @user.name %>'s horses: </h1>
-<ul>
-    <% @horses.each do |horse| %>
-            <li><%= link_to "#{horse.name}", horse_path(horse) %></li>
-    <% end %>
-
-   
-</ul>
 <% if @user %>
+    <h1><%= @user.name %>'s horses: </h1>
+    <ul>
+        <% @horses.each do |horse| %>
+                <li><%= link_to "#{horse.name}", horse_path(horse) %></li>
+                <% end %>
+    </ul>
+
     <p><%= link_to 'See your shows', user_shows_path(@user) %></p>
     <p><%= link_to 'Create New Horse', new_horse_path %></p>
+<% else %>
 <% end %>
