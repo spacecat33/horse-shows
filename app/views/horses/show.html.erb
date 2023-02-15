@@ -8,7 +8,7 @@
 <p><strong>Breed: </strong><%= @horse.breed %></p>
 <p><strong>Colour: </strong><%= @horse.colour %></p>
 
-<h2> shows </h2>
+<h2> Shows </h2>
 <p><%= @horse.name %> is in the following shows by <%= @user.name %>:  --- If no shows are visible below, this means no shows have been scheduled for this horse.</p>
 <% @horse.shows.each do |show| %>
     <h4>Title: <%= show.title %></h4>

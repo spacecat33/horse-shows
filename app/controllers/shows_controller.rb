@@ -10,20 +10,23 @@ class ShowsController < ApplicationController
         # /users/:user_id/shows
         # @horse = Horse.find_by(id: params[:id])
         @user = current_user
+        @horse = Horse.find_by(id: params[:id])
         if params[:user_id] 
-           @shows = @user.shows
-        # elsif params[:horse_id]
-        #     @shows = @horse.shows
+           @shows = @user.shows 
+        elsif params[:horse_id]
+            @shows = @horse.shows
         else
             @shows = Show.all 
         end
     end
 
     def new
+        @user = current_user
         @show = Show.new(show_params)
     end
 
     def create
+        @user = current_user
         @show = Show.new(show_params)
         if @show.save
         redirect_to horses_path(@horse)
@@ -31,6 +34,7 @@ class ShowsController < ApplicationController
             render :new
         end
     end
+
 
     private
 

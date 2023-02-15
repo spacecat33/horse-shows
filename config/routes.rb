@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :shows, only: [:index]
   end
 
-  root 'sessions#signin'
+  root 'application#home'
   
   
 # fix this route: http://localhost:3000/users/new

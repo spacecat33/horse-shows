@@ -1,13 +1,14 @@
-<h1><%= @user.name %>'s shows: </h1>
+<h2><%= @user.name %>'s shows: </h2>
 <ol>
-    <% @shows.each.with_index(1) do |index, show| %>
-        <ul>
-        <li> Title: <%= @show.title %></li>
-        <li> Location: <%= @show.location %></li>
-        <li> Discipline: <%= @show.discipline %></li>
-        <li> Level: <%= @show.level %></li>
-        <li> Entry_fee: <%= @show.entry_fee %></li>
-        <li><%= link_to @show.horse.name, horse_path(@show.horse) %></li>
-    </ul>
+    <% @shows.each do |show| %>
+        <ol>
+        <h3>Title: <%= show.title %></h4>
+        <h4>Location: <%= show.location %><br>
+        Discipline: <%= show.discipline %><br>
+        Level: <%= show.level %><br>
+        Entry_fee: <%= show.entry_fee %><br>
+        </h4><br><br>
+    </ol>
     <% end %>
 </ol>
+
