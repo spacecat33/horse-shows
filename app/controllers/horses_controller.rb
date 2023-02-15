@@ -17,8 +17,7 @@ class HorsesController < ApplicationController
 
     def create
         @horse = Horse.new(horse_params)
-        if @horse.valid?
-            @horse.save
+        if @horse.save
         redirect_to horse_path(@horse)
         else
             render :new
@@ -39,6 +38,8 @@ class HorsesController < ApplicationController
             render :edit
           end
      end
+
+      
 
      private
 
