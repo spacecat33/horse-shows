@@ -6,17 +6,13 @@ class Horse < ApplicationRecord
     validates :name, presence: { :message =>  "must be given please" }
     # validates_format_of :name, :with => /^[A-Za-z\s]*$/, :message => "can only contain alphanumeric characters and spaces!"
     validates :name, uniqueness: {:case_sensitive => false, :message => "is already is use for another horse!"}
+    before_save :make_title_case
 
-    def new_horse_entry(user, title, level, discipline)
-        # Horse#new_horse_entry(user, title, level, discipline)
-        Show.create(
-            title: title,
-            level: level,
-            disipline: discipline,
-            entry_fee: entry_fee,
-            horse_id: horse.id,
-            user_id: user.id
-        )
+    private
+
+    def make_title_case
+        # Rails provides a String#titlecase method
+        self.name = self.name.titlecase
     end
 
 end

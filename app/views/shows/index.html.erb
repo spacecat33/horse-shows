@@ -1,6 +1,13 @@
 <h1><%= @user.name %>'s shows: </h1>
 <ol>
-    <% @shows.each.with_index(1) do |show, index| %>
-            <li>Show</li>
+    <% @shows.each.with_index(1) do |index, show| %>
+        <ul>
+        <li> Title: <%= @show.title %></li>
+        <li> Location: <%= @show.location %></li>
+        <li> Discipline: <%= @show.discipline %></li>
+        <li> Level: <%= @show.level %></li>
+        <li> Entry_fee: <%= @show.entry_fee %></li>
+        <li><%= link_to @show.horse.name, horse_path(@show.horse) %></li>
+    </ul>
     <% end %>
 </ol>

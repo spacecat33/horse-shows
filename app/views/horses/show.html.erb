@@ -8,21 +8,37 @@
 <p><strong>Breed: </strong><%= @horse.breed %></p>
 <p><strong>Colour: </strong><%= @horse.colour %></p>
 
-
+<h2> shows </h2>
 <p><%= @horse.name %> is in the following shows by <%= @user.name %>:  --- If no shows are visible below, this means no shows have been scheduled for this horse.</p>
-<ol><% @horse.shows.each.with_index(1) do |show, index| %>
-        <li>Show</li>
-    <% end %></ol><br><br>
+<% @horse.shows.each do |show| %>
+    <h4>Title: <%= show.title %></h4>
+<ul>
+    <li>Location:<%= show.location %></li>
+    <li>Discipline:<%= show.discipline %></li>
+    <li>Level:<%= show.level %></li>
+    <li>Entry_fee: <%= show.entry_fee %></li>
+    <li>Rider:  <%= link_to show.user.name, user_path(show.user) %></li>
+</ul>
+    <% end %><br><br>
 
 
-<% if @user %>
-    <p><%= link_to 'Edit Horse', [:edit, @horse] %></p>
-<% else %>
+
+
+    <p>Enter <%= @horse.name %> in a new show: </p>
     <%= form_for(@show, url: show_path) do |f| %>
+        Title: <%= f.text_field :title %><br>
+        Location: <%= f.text_field :location %><br>
+        Discipline: <%= f.text_field :discipline %><br>
+        Level: <%= f.number_field :level %><br>
+        Entry_fee: <%= f.number_field :entry_fee %><br>
         <%= f.hidden_field :user_id, value: @user.id %><br />
         <%= f.hidden_field :horse_id, value: @horse.id %><br />
-        <%= f.submit "Attend this show"%>
+        <%= f.submit %>
     <% end %>
-<% end %>
+
+    <br><br><br><br>
+
+    <p><%= link_to 'Edit Horse', [:edit, @horse] %></p>
+
 
 

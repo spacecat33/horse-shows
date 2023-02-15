@@ -19,15 +19,16 @@ class ShowsController < ApplicationController
         end
     end
 
+    def new
+        @show = Show.new(show_params)
+    end
+
     def create
         @show = Show.new(show_params)
-        if @show.attend_show == true
-            @show.save
-            notice = "Thanks for attending the #{@show.title}!"
-            redirect_to user_path(@show.user), notice: notice
+        if @show.save
+        redirect_to horses_path(@horse)
         else
-            notice = @show.attend_show
-            redirect_to user_path(@show.user), notice: notice
+            render :new
         end
     end
 
@@ -35,6 +36,11 @@ class ShowsController < ApplicationController
 
     def show_params
         params.require(:show).permit(
+            :title,
+            :location,
+            :discipline,
+            :level,
+            :entry_fee,
             :user_id,
             :horse_id
         )

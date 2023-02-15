@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   root 'sessions#signin'
   
+  
 # fix this route: http://localhost:3000/users/new
  
   get '/users/new', to: 'users#new'

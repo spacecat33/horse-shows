@@ -1,12 +1,10 @@
 <h1> User's index page </h1>
 <p><strong>Name: </strong><%= @user.name %></p>
 <p><strong>Country: </strong><%= @user.country %></p>
-<p><strong>Level: </strong><%= @user.level %></p>
-<p><%= link_to "Edit User (form to be added post project)", [:edit, @user] %></p>
+<p><strong>Level: </strong><%= @user.level %></p><br><br><br>
+<p><%= link_to "Edit your user details", [:edit, @user] %></p>
 <%= link_to "See your horses", horses_path %>
-<% if @user %>
     <p><%= link_to 'See your shows', user_shows_path(@user) %></p>
-<% end %>
 <% flash.each do |type, msg| %>
     <%= msg %>
 <% end %>

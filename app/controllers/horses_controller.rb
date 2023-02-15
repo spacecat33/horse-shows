@@ -2,7 +2,7 @@ class HorsesController < ApplicationController
 
     def index
         @user = current_user
-        @horses = Horse.all
+        @horses = @user.horses
     end
 
     def show
