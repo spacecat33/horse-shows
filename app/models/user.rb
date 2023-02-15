@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
     validates :name, uniqueness: true, presence: true  
 
+    before_save :make_title_case
+
     private
 
     def make_title_case

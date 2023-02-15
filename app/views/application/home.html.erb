@@ -1,3 +1,5 @@
 <h1>Welcome to the Horse Shows app <%= @user.name %>!</h1>
 
-<p> Got to your profile to see your horses and the shows you entered them in! </p
+<p> Got to your profile to see your horses and the shows you entered them in! </p><br><br>
+
+<%= link_to "Your Profile", user_path(@user), class: 'navbar-brand' %><br><br>

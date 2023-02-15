@@ -1,4 +1,4 @@
-<h1> User's show page </h1>
+<h1> User show page </h1>
 <p><strong>Name: </strong><%= @user.name %></p>
 <p><strong>Country: </strong><%= @user.country %></p>
 <p><strong>Level: </strong><%= @user.level %></p>
@@ -6,7 +6,9 @@
 <%= link_to "See your horses", horses_path %>
 <% flash.each do |type, msg| %>
     <%= msg %>
-<% end %>
+<% end %><br><br>
+
+<%= link_to "Your Profile", user_path(@user), class: 'navbar-brand' %><br><br>
 
 
 

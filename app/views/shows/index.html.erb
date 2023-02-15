@@ -1,4 +1,6 @@
 <h2><%= @user.name %>'s shows: </h2>
+<% if @user.shows.count >= 1 %>
+
 <ol>
     <% @shows.each do |show| %>
         <ol>
@@ -13,4 +15,12 @@
     </ol>
     <% end %>
 </ol>
+<% else %>
 
+You currently have no shows.
+
+
+<% end %>
+<br><br>
+
+    <%= link_to "Your Profile", user_path(@user), class: 'navbar-brand' %><br><br>

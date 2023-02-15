@@ -1,7 +1,5 @@
 <br><br>
 <h1><%= @horse.name %></h1>
-
-
 <p><strong>Level: </strong><%= @horse.level %></p>
 <p><strong>Height in hands: </strong><%= @horse.height %></p>
 <p><strong>Age: </strong><%= @horse.age %></p>
@@ -9,7 +7,10 @@
 <p><strong>Colour: </strong><%= @horse.colour %></p>
 
 <h2> Shows </h2>
-<p><%= @horse.name %> is in the following shows by <%= @user.name %>:  --- If no shows are visible below, this means no shows have been scheduled for this horse.</p>
+<p><%= @horse.name %> is in the following shows by <%= @user.name %>:  
+
+    <% if @user.shows.count >= 1 %>
+
 <% @horse.shows.each do |show| %>
     <h4>Title: <%= show.title %></h4>
 <ul>
@@ -21,7 +22,12 @@
 </ul>
     <% end %><br><br>
 
+    <% else %>
 
+    You currently have no shows.
+    
+    
+    <% end %>
 
 
     <p>Enter <%= @horse.name %> in a new show: </p>
@@ -38,7 +44,7 @@
 
     <br><br><br><br>
 
-    <p><%= link_to 'Edit Horse', [:edit, @horse] %></p>
+    <p><%= link_to 'Edit Horse', [:edit, @horse] %></p><br><br>
 
-
+    <%= link_to "Your Profile", user_path(@user), class: 'navbar-brand' %><br><br>
 

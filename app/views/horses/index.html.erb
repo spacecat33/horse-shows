@@ -1,12 +1,22 @@
-<% if @user %>
+<br><br><br><br>
+<% if @user.horses.count >= 1 %>
     <h1><%= @user.name %>'s horses: </h1>
-    <ul>
-        <% @horses.each do |horse| %>
-                <li><%= link_to "#{horse.name}", horse_path(horse) %></li>
-                <% end %>
-    </ul>
+        <ol>
+        <% @user.horses.each do |horse| %>
+                <%= link_to "#{horse.name}", horse_path(horse) %> <br>
+        <% end %>
+        </ol>
+        You currently have <%= "#{@user.horses.count}" %> horses <br><br>
+        
+    <%= link_to 'See your shows', user_shows_path(@user) %>
+    
+    <% else %>
 
-    <p><%= link_to 'See your shows', user_shows_path(@user) %></p>
-    <p><%= link_to 'Create New Horse', new_horse_path %></p>
-<% else %>
-<% end %>
+    You currently have no horses.
+
+
+    <% end %>
+    
+<p><%= link_to 'Add a Horse', new_horse_path %></p><br><br>
+
+<%= link_to "Your Profile", user_path(@user), class: 'navbar-brand' %><br><br>
