@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :horses, through: :shows
 
     validates :name, uniqueness: true, presence: true  
+    validates(:name, { :length => { :minimum => 2 } })
 
     before_save :make_title_case
 
