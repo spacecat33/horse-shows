@@ -1,11 +1,13 @@
 class Horse < ApplicationRecord
     include ActiveModel::Validations
+
     has_many :shows
     has_many :users, through: :shows
+
     validates(:name, { :length => { :minimum => 2 } })
     validates :name, presence: { :message =>  "must be given please" }
-    # validates_format_of :name, :with => /^[A-Za-z\s]*$/, :message => "can only contain alphanumeric characters and spaces!"
     validates :name, uniqueness: {:case_sensitive => false, :message => "is already is use for another horse!"}
+    
     before_save :make_title_case
 
     private

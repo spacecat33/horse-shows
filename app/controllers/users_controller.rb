@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
 
-        if @user
+        if current_user
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by(id: params[:id])
+        @user = current_user
        
     end
    

@@ -1,4 +1,7 @@
 <h1> Edit Horse  </h1>
+
+<%= render 'form' %>
+
 <%= form_for @horse do |f| %>
     Name: <%= f.text_field :name %><br>
     Level: <%= f.number_field :level %><br>
@@ -9,18 +12,4 @@
     <%= f.submit %>
 <% end %>
 
-<% if @horse.errors.any? %>
-<div id="error_explanation">
-<h2>
-  <%= pluralize(@horse.errors.count, "error") %>
-  prohibited this post from being saved:
-</h2>
-
-<ul>
-<% @horse.errors.full_messages.each do |msg| %>
-  <li><%= msg %></li>
-<% end %>
-</ul>
-</div>
-<% end %>
 
