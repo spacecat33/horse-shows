@@ -1,8 +1,11 @@
 class HorsesController < ApplicationController
 
     def index
-        redirect_to signin_path unless @user = current_user
+        if @user = User.find_by_id(session[:user_id])
         @horses = @user.horses
+        else
+        redirect_to signin_path
+        end
 
     end
 
