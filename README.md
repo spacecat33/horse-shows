@@ -22,7 +22,7 @@ Correct the details of any of their horses.
 
     $ cd horse_shows
 
-    NOTE: This repository uses a Secret_Session key. Without one, you will see a cookie security warning in your terminal whenever you view this repository. To resolve, make sure you create a secret_Session key such as using .env or credentials.yml.enc. MAKE SURE YOU DO NOT PUSH YOUR KEY TO A PUBLICLY ACCESSIBLE SPACE.
+    NOTE: This repository uses omniauth. You will need to create a Session key such as by using the files .env or credentials.yml.enc. A helpful video for how to do this with credentials.yml.enc can be found here: https://www.youtube.com/watch?v=m1wh6U-2SbE. Fo whichever option you choose, PLEASE MAKE SURE THAT YOU DO NOT PUSH YOUR KEY TO A PUBLICLY ACCESSIBLE SPACE.
 
 3. In your terminal, run: 
 

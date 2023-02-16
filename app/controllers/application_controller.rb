@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
    
     def home
         @user = current_user
+        if @user
+
+        else
+            redirect_to '/signin'
+        end
+
     end
     # # def authenticated?
     # #     if !logged_in?

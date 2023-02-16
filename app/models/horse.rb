@@ -7,7 +7,8 @@ class Horse < ApplicationRecord
     validates(:name, { :length => { :minimum => 2 } })
     validates :name, presence: { :message =>  "must be given please" }
     validates :name, uniqueness: {:case_sensitive => false, :message => "is already is use for another horse!"}
-    
+    # consider adding validation that checks horse associated with a show before saving.
+
     before_save :make_title_case
 
     private
