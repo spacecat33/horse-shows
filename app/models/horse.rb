@@ -17,6 +17,14 @@ class Horse < ApplicationRecord
         self.shows.sum(:entry_fee)
     end
 
+    def self.order_by_name
+        self.alphabeticize
+    end
+
+    def self.find_by_name
+        Horse.find_by!(first_name: 'Smith')
+    end
+    
     private
 
     def make_title_case
