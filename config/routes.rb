@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get '/users/new', to: 'users#new'
   post '/users/new', to: 'users#create'
 
-  post '/show', to:"shows#create", as: 'show'
+  post '/shows', to:"shows#create", as: 'shows'
 
    # Sessions routes
   get '/signin', to: 'sessions#signin'

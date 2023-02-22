@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
     has_many :shows
-    has_many :horses, through: :shows
+    has_many :horses, -> {distinct}, through: :shows
 
     validates :name, uniqueness: true, presence: true  
     validates(:name, { :length => { :minimum => 2 } })

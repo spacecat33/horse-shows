@@ -31,7 +31,7 @@
 
 
     <p>Enter <%= @horse.name %> in a new show: </p>
-    <%= form_for(@show, url: show_path) do |f| %>
+    <%= form_for(@show, url: shows_path) do |f| %>
         Title: <%= f.text_field :title %><br>
         Location: <%= f.text_field :location %><br>
         Discipline: <%= f.text_field :discipline %><br>
