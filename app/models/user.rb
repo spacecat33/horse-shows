@@ -13,6 +13,8 @@ class User < ApplicationRecord
         self.shows.sum(:entry_fee)
     end
 
+   
+
     private
 
     def make_title_case
