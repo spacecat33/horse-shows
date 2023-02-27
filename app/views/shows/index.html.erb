@@ -33,7 +33,18 @@ You currently have no shows.
 
 <% end %>
 
-<p><strong>Shows by cost </strong><%= @show.cost_of_show %></p>
+<p><strong>The number of shows that cost over $30 = </strong><%= @expensive_shows.count %></p>
+
+
+<p><strong>The list of shows that cost over $30 is shown below: </strong>
+<% @expensive_shows.each do |show| %>
+    <ol>
+    <%= show.title %>
+
+    </ol>
+    <% end %>
+</p>
+
 <br><br>
 
     <%= link_to "Your Profile", user_path(@user), class: 'navbar-brand' %><br><br>

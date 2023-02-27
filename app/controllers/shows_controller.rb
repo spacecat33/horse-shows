@@ -9,7 +9,7 @@ class ShowsController < ApplicationController
         # be user or horse/shows otherwise all the shows
         # /users/:user_id/shows
         # @horse = Horse.find_by(id: params[:id])
-       @show = Show.cost_of_show
+       @expensive_shows = Show.expensive_shows
         @user = current_user
         @horse = Horse.find_by(id: params[:id])
         if params[:user_id] 
