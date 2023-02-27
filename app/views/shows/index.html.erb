@@ -36,20 +36,31 @@ You currently have no shows.
 <% end %>
 <% if @user.shows.count >= 1 %>
 
-<p><strong>The number of shows that cost over $30 = </strong><%= @expensive_shows.count %></p>
+<p>The <%= @dressage_shows.count %> dressage shows that you have entered are shown below: </p>
+    <% @dressage_shows.each do |show| %>
+        <ol>
+        <%= show.title %>
+        <%= show.entry_fee %>
 
-
-<p><strong>The list of shows that cost over $30 is shown below: </strong>
-<% @expensive_shows.each do |show| %>
-    <ol>
-    <%= show.title %>
-    <%= show.entry_fee %>
-
-    </ol>
+        </ol>
     <% end %>
+
+    </p><br><br>
+
+
+<p>The list of shows that cost over $30 is shown below: 
+    <% @expensive_shows.each do |show| %>
+        <ol>
+        <%= show.title %>
+        <%= show.entry_fee %>
+
+        </ol>
     <% end %>
-</p>
 
-<br><br>
+    </p><br><br>
 
-    <%= link_to "Your Profile", user_path(@user), class: 'navbar-brand' %><br><br>
+<% end %>
+
+
+
+<%= link_to "Your Profile", user_path(@user), class: 'navbar-brand' %><br><br>

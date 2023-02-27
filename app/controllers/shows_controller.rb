@@ -10,6 +10,8 @@ class ShowsController < ApplicationController
         # /users/:user_id/shows
         # @horse = Horse.find_by(id: params[:id])
        @expensive_shows = Show.expensive_shows
+       @dressage_shows = Show.dressage_shows
+       
         @user = current_user
         @horse = Horse.find_by(id: params[:id])
         if params[:user_id] 

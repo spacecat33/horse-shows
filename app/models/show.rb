@@ -6,6 +6,7 @@ class Show < ApplicationRecord
     # scope :class_discipline, ->(n = 'dressage') { where("disipline: '?' ) }
     
     scope :expensive_shows, -> { where('entry_fee > 30') }
+    scope :dressage_shows, -> { where(discipline: 'Dressage') }
 
     def self.first_five
        all.limit(5)

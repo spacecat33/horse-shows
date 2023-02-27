@@ -11,11 +11,6 @@ class ApplicationController < ActionController::Base
         end
 
     end
-    # # def authenticated?
-    # #     if !logged_in?
-    # #         redirect_to '/login'
-    # #     end
-    # # end
 
     def logged_in?
         !!current_user
@@ -28,7 +23,4 @@ class ApplicationController < ActionController::Base
         @user ||= User.find_by_id(session[:user_id]) if session[:user_id]   #this would help to avoid duplicate requests to the database
     end
 
-    # # def require_login
-    # #     return head(:forbidden) unless session.include? :user_id
-    # # end
 end
