@@ -12,6 +12,8 @@ height="20%"
 
 <% if @user.shows.count >= 1 %>
 
+<h2><%= @user.name %>, your horses are entered in the <%= @user.shows.count %> following shows: </h2>
+
 <ol>
     <% @shows.each do |show| %>
         <ol>
@@ -32,6 +34,7 @@ You currently have no shows.
 
 
 <% end %>
+<% if @user.shows.count >= 1 %>
 
 <p><strong>The number of shows that cost over $30 = </strong><%= @expensive_shows.count %></p>
 
@@ -40,8 +43,10 @@ You currently have no shows.
 <% @expensive_shows.each do |show| %>
     <ol>
     <%= show.title %>
+    <%= show.entry_fee %>
 
     </ol>
+    <% end %>
     <% end %>
 </p>
 
