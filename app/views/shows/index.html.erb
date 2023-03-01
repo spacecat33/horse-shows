@@ -36,7 +36,7 @@ You currently have no shows.
 <% end %>
 <% if @user.shows.count >= 1 %>
 
-<p>The <%= @dressage_shows.count %> dressage shows that you have entered are shown below: </p>
+<p>The <%= @dressage_shows.count %> dressage shows available to enter are shown below: </p>
     <% @dressage_shows.each do |show| %>
         <ol>
         <%= show.title %>
