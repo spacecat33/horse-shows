@@ -24,8 +24,9 @@ class HorsesController < ApplicationController
         @user = current_user
         @horse = Horse.new(horse_params)
         if @horse.save
-        redirect_to horse_path(@horse)
+            redirect_to horse_path(@horse)
         else
+            # flash.now[:error] = "Could not save information"
             render :new
         end
     end
@@ -41,9 +42,9 @@ class HorsesController < ApplicationController
         @horse = Horse.find_by(id: params[:id])
         if @horse.update(horse_params)
             redirect_to horse_path(@horse)
-          else
-            render :edit
-          end
+        else
+            render :edit, status: :unprocessable_entity
+        end
      end
 
       

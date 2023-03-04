@@ -18,6 +18,7 @@ class UsersController < ApplicationController
             redirect_to user_path(@user)
         else
             render 'new'
+            # redirect_to '/signin'
         end
     end
     
@@ -28,8 +29,11 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find_by(id: params[:id])
-        @user.update(user_params)
-        redirect_to user_path(@user)
+        if @user.update(user_params)
+            redirect_to user_path(@user)
+        else
+            render :edit, status: :unprocessable_entity
+        end
     end
 
     def show

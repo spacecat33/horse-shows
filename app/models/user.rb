@@ -2,9 +2,10 @@ class User < ApplicationRecord
     has_secure_password
     has_many :shows
     has_many :horses, -> {distinct}, through: :shows
-
-    validates :name, uniqueness: true, presence: true  
+    
     validates(:name, { :length => { :minimum => 2 } })
+    validates :name, uniqueness: true, presence: true  
+    
 
     before_save :make_title_case
 

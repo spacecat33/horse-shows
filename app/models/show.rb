@@ -7,6 +7,10 @@ class Show < ApplicationRecord
     
     scope :expensive_shows, -> { where('entry_fee > 30') }
     scope :dressage_shows, -> { where(discipline: 'Dressage') }
+    
+    def self.expensive_shows
+        Show.all.filter{|show| show.entry_fee > 30}
+    end 
 
     def self.first_five
        all.limit(5)
