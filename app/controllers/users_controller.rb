@@ -13,11 +13,11 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
 
-        if current_user
+        if @user = User.authenticate(params[:username], params[:password])
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
-            render 'new'
+            render 'new' # use this if change this code to show error with form and want to keep their existing entries
             # redirect_to '/signin'
         end
     end

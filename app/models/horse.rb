@@ -1,7 +1,8 @@
 class Horse < ApplicationRecord
     include ActiveModel::Validations
 
-    has_many :shows
+    has_many :shows, dependent: :destroy # ‘dependent: :destroy’ ensures that, if a given horse is destroyed, all joiner table rows with that horse will be destroyed as well.
+    has_many :horses, -> {distinct}, through: :shows
     has_many :users, through: :shows
 
     validates(:name, { :length => { :minimum => 2 } })

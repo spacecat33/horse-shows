@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
-    has_many :shows
+    has_many :shows, dependent: :destroy # ‘dependent: :destroy’ ensures that, if a given user is destroyed, all joiner table rows with that user will be destroyed as well.
     has_many :horses, -> {distinct}, through: :shows
     
     validates(:name, { :length => { :minimum => 2 } })
