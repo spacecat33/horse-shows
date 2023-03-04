@@ -9,6 +9,22 @@
     Age: <%= f.number_field :age %><br>
     Breed: <%= f.text_field :breed %><br><br>
     Colour: <%= f.text_field :colour %><br><br>
+
+    <h3>Shows</h3>
+    <h2> Enter <%= @horse.name %> in shows: </h2>
+
+    <%= f.fields_for :shows, @horse.shows.build do |s| %>
+
+        <%= s.label :title %>
+        <%= s.text_field :title, list: "shows_autocomplete" %>
+            <datalist id="shows_autocomplete">
+            <% Show.all.each do |show| %>
+                <option value="<%= show.title %>">
+            <% end %>
+        </datalist>
+        <br><br>
+    <% end %>
+
     <%= f.submit %>
 <% end %>
 
