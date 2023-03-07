@@ -11,7 +11,7 @@
     Colour: <%= f.text_field :colour %><br><br>
 
     <h3>Shows</h3>
-    <h2> Enter <%= @horse.name %> in shows: </h2>
+    <h2> Enter this horse in a show: </h2>
 
     <%= f.fields_for :shows, @horse.shows.build do |s| %>
 

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :shows, only: [:index]
   end
   
-
+  get '/horses/bay_horses', to: 'horses#bay_horses'
   resources :horses do
     resources :shows, only: [:index]
   end
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#signedin'
   get '/signout', to: 'sessions#signout'
   
-
+ 
   get '/auth/:provider/callback', to: 'sessions#create' # OAuth callback route
 
 end

@@ -47,7 +47,9 @@ class HorsesController < ApplicationController
         end
      end
 
-      
+      def bay_horses
+        @bay_horses = Horse.bay_horses
+      end
 
      private
 
